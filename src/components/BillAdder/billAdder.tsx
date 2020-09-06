@@ -44,7 +44,7 @@ const BillAdder: FC<BillAdderProps> = (props: BillAdderProps) => {
   }
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="bill-adder">
       <button
         className="btn btn-dark"
         type="button"

@@ -19,17 +19,17 @@ export interface BillListProps {
   loading?: boolean;
 }
 
-const List: FC<BillListProps> = (props: BillListProps) => {
+const BillList: FC<BillListProps> = (props: BillListProps) => {
   const { list, loading } = props
 
   return (
-    <ul className="bill-list container list-group list-group-flush my-3 p-3 bg-white rounded shadow-sm">
+    <ul className="bill-list container list-group list-group-flush my-3 p-3 bg-white rounded shadow-sm" data-testid="bill-list">
       {loading && <Loading />}
       {!loading && list.length === 0 && (
         <NoData />
       )}
       {
-        list.map((item) => (
+        !loading && list.map((item: BillDataItem) => (
           <BillItem
             key={item.id}
             amount={parseFloat(item.amount as string)}
@@ -43,4 +43,4 @@ const List: FC<BillListProps> = (props: BillListProps) => {
   )
 }
 
-export default List
+export default BillList

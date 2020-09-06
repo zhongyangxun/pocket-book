@@ -30,7 +30,7 @@ const CategorySelect: FC<CategorySelectProps> = (props: CategorySelectProps) => 
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <select {...restProps}>
+    <select {...restProps} data-testid="category-select">
       <option value="">{placeholderText}</option>
       {
         cateList.map(({ id, name, type }) => {

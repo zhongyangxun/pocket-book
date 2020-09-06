@@ -12,7 +12,7 @@ export interface BillItemProps {
   amount: number;
 }
 
-const Item: FC<BillItemProps> = (props: BillItemProps) => {
+const BillItem: FC<BillItemProps> = (props: BillItemProps) => {
   const {
     type,
     time,
@@ -36,4 +36,4 @@ const Item: FC<BillItemProps> = (props: BillItemProps) => {
   )
 }
 
-export default Item
+export default BillItem

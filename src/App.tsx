@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import Header from './components/Header/header'
-import List, { BillDataItem } from './components/BillList/list'
+import List, { BillDataItem } from './components/BillList/BillLlist'
 import { BillType } from './components/BillList/Item'
 import ToolBar from './components/ToolBar/toolBar'
 import { getBillList, BillParams } from './api/bill'
