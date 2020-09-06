@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { AxiosResponse } from 'axios'
-import CateorySelect from '../CategorySelect/categorySelect'
+import CategorySelect from '../CategorySelect/categorySelect'
 import { formatDate } from '../../util'
 import { addBillItem } from '../../api/bill'
 
@@ -117,7 +117,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
     <form className="add-form" onSubmit={handleSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="add-category">分类</label>
-        <CateorySelect
+        <CategorySelect
           id="add-category"
           className={classNames('custom-select', {
             'is-invalid': !!formErr.category
@@ -164,7 +164,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
           id="amount"
           name="amount"
           required
-          // value={form.amount}
+          value={form.amount}
           onChange={handleChange}
           onFocus={handleFocus}
           disabled={loading}
