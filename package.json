@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext js,ts,tsx src --max-warnings 5"
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "add-libs": "yarn && cd server && yarn"
   },
   "husky": {
     "hooks": {
