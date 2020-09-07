@@ -54,10 +54,10 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
   }, [month, category])
 
   return (
-    <div className={classes}>
+    <div className={classes} data-testid="test-filter">
       <div className="form-row align-items-left">
         <div className="form-group mx-2">
-          <label>月份</label>
+          <label htmlFor="filter-month">月份</label>
           <input
             className="form-control mx-sm-3"
             onChange={handleDateChange}
@@ -66,16 +66,18 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
             value={month}
             max={formatDate(new Date(), { hasDay: false })}
             disabled={loading}
+            id="filter-month"
           />
         </div>
         <div className="form-group mx-2">
-          <label>分类</label>
+          <label htmlFor="filter-category">分类</label>
           <CategorySelect
             className="form-control mx-sm-3"
             placeholderText="全部"
             value={category}
             onChange={handleCategoryChange}
             disabled={loading}
+            id="filter-category"
           />
         </div>
       </div>

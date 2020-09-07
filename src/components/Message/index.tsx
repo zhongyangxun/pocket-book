@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { TransitionGroup } from 'react-transition-group'
 import Transition from '../Transition/transiton'
-import Message, { MessageType } from './Message'
+import Message, { MessageType } from './message'
 import './_style.scss'
 
 export interface MessageApi {
@@ -28,7 +28,7 @@ const getUuid = (): string => {
 
 let add: (notice: Notice) => void
 
-const MessageContainer = () => {
+export const MessageContainer = () => {
   const [notices, setNotices] = useState<Notice[]>([])
   const timeout = 3 * 1000
   const maxCount = 10

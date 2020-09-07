@@ -41,7 +41,7 @@ const Message: FC<MessageProps> = (props: MessageProps) => {
   }
 
   return (
-    <div className="message my-2 text-center">
+    <div className="message my-2 text-center" data-testid="test-message">
       <div className="message-content d-inline-flex bg-white px-4 py-2 shadow">
         <div className="icon mr-2">
           {renderIcon(type)}

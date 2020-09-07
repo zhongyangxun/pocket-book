@@ -95,7 +95,7 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
 
   return (
     <>
-      <div className={modalClasses} style={styles}>
+      <div className={modalClasses} style={styles} data-testid="test-modal">
         <Transition
           in={visible}
           timeout={300}

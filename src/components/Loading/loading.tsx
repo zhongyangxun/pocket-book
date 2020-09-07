@@ -11,11 +11,13 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       <div className="loading-icon">
         <div className="spinner-border" />
       </div>
-      <span className="text">加载中...</span>
-      {text && text}
-
+      {text && <span className="text">{text}</span>}
     </div>
   )
+}
+
+Loading.defaultProps = {
+  text: '加载中...'
 }
 
 export default Loading
