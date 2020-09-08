@@ -30,7 +30,7 @@ describe('test BillAdder component', () => {
     expect(formElement).not.toBeInTheDocument()
   })
 
-  it('should show dialog and BillForm dialog after button clicked', async () => {
+  it('should show BillForm dialog after button clicked', async () => {
     fireEvent.click(buttonElement)
     const dialogElement = wrapper.container.querySelector('.modal-dialog')
     const formElement = wrapper.container.querySelector('.add-form')
