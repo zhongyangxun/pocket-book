@@ -29,7 +29,5 @@ export interface AddBillBody {
 export const addBillItem = (data: AddBillBody) => (
   axios.post(`${baseUrl}/addItem`, {
     ...data
-  }).catch((err) => {
-    window.console.log(err)
   })
 )

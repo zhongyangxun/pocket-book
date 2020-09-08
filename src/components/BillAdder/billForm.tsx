@@ -6,7 +6,7 @@ import React, {
   FormEvent
 } from 'react'
 import classNames from 'classnames'
-import { AxiosResponse } from 'axios'
+import { AxiosResponse, AxiosError } from 'axios'
 import CategorySelect from '../CategorySelect/categorySelect'
 import { formatDate } from '../../util'
 import { addBillItem } from '../../api/bill'
@@ -23,10 +23,11 @@ export type BillFormError = BillFormFields
 
 export interface BillFormProps {
   onFinish?: (form: BillFormFields, res: AxiosResponse) => void;
+  onFail?: (form: BillFormFields, err: AxiosError) => void;
 }
 
 const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
-  const { onFinish } = props
+  const { onFinish, onFail } = props
   const [form, setForm] = useState<BillFormFields>({
     category: '',
     amount: '',
@@ -104,17 +105,21 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
         time,
         amount: parseFloat(amount)
       }).then((res) => {
-        setLoading(false)
-
         if (onFinish) {
           onFinish(form, res as AxiosResponse)
         }
+      }).catch((err) => {
+        if (onFail) {
+          onFail(form, err as AxiosError)
+        }
+      }).finally(() => {
+        setLoading(false)
       })
     }
   }
 
   return (
-    <form className="add-form" onSubmit={handleSubmit} noValidate>
+    <form className="add-form" onSubmit={handleSubmit} noValidate data-testid="test-bill-form">
       <div className="form-group">
         <label htmlFor="add-category">分类</label>
         <CategorySelect

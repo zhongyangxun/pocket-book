@@ -20,12 +20,18 @@ const App: FC = () => {
 
   const requestBillList = (params: BillParams = {}) => {
     setLoading(true)
-    getBillList(params).then((res) => {
-      setLoading(false)
-      const { list: billList, typeSummary } = res.data
-      setList(billList)
-      setSummary(typeSummary)
-    })
+    getBillList(params)
+      .then((res) => {
+        const { list: billList, typeSummary } = res.data
+        setList(billList)
+        setSummary(typeSummary)
+      })
+      .catch((err) => {
+        window.console.error(err)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   const passedContext: IBillContext = {
@@ -39,7 +45,7 @@ const App: FC = () => {
   }
 
   return (
-    <div className="App bg-light">
+    <div className="App bg-light" data-testid="test-app">
       <Header />
       <BillContext.Provider value={passedContext}>
         <ToolBar />

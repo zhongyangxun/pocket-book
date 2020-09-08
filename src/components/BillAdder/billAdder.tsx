@@ -30,7 +30,7 @@ const BillAdder: FC<BillAdderProps> = (props: BillAdderProps) => {
 
   const handleFormSuccess = (form: BillFormFields) => {
     setShowModal(false)
-    message.success('添加成功')
+    message.success('添加成功！')
     const { date } = form
     const { changeMonth, getBillList } = context
     const month = formatMonth(new Date(date))
@@ -41,6 +41,11 @@ const BillAdder: FC<BillAdderProps> = (props: BillAdderProps) => {
       const time = new Date(month).getTime()
       getBillList({ time })
     }
+  }
+
+  const handleFormFail = () => {
+    setShowModal(false)
+    message.error('添加失败，请稍后重试。')
   }
 
   return (
@@ -64,6 +69,7 @@ const BillAdder: FC<BillAdderProps> = (props: BillAdderProps) => {
       >
         <BillForm
           onFinish={handleFormSuccess}
+          onFail={handleFormFail}
         />
       </Modal>
     </div>

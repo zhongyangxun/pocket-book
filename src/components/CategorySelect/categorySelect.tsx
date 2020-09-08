@@ -23,9 +23,13 @@ const CategorySelect: FC<CategorySelectProps> = (props: CategorySelectProps) => 
   const [cateList, setCateList] = useState<CategoryItem[]>([])
 
   useEffect(() => {
-    getBillCategories().then((res) => {
-      setCateList(res.data)
-    })
+    getBillCategories()
+      .then((res) => {
+        setCateList(res.data)
+      })
+      .catch((err) => {
+        window.console.error(err)
+      })
   }, [])
 
   return (
