@@ -78,8 +78,8 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
     }
   }
 
-  const validateEmpty = (): boolean => {
-    let passValidate = true
+  const validate = (): boolean => {
+    let passValidate = !Object.values(formErr).some((errMsg) => errMsg !== '')
 
     Object.entries(form).forEach(([key, value]) => {
       if (value === '') {
@@ -96,7 +96,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (validateEmpty()) {
+    if (validate()) {
       const { category, date, amount } = form
       const time = new Date(date).getTime()
       setLoading(true)

@@ -160,7 +160,7 @@ const createAddItemReqBodySchema = (categoryIds: string[]): ObjectSchema => {
   const addItemSchema = Joi.object({
     time: Joi.date().timestamp('javascript').required(),
     category: Joi.allow(...categoryIds).only().required(),
-    amount: Joi.number().positive().integer().required()
+    amount: Joi.number().positive().required()
   })
 
   return addItemSchema
@@ -182,7 +182,7 @@ route.post('/addItem', async (req, res) => {
   const { error } = validateResult
   if (!error) {
     const { type } = categories.find(({ id }: { id: string }) => id === category) as CateGoryItem
-    const serializedData = `${type},${time},${category},${amount}\n`
+    const serializedData = `\n${type},${time},${category},${amount}`
 
     fs.appendFile(path.resolve(__dirname, '../data/bill.csv'), serializedData)
       .then(() => {
