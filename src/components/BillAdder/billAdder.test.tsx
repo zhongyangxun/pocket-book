@@ -33,7 +33,7 @@ describe('test BillAdder component', () => {
   it('should show BillForm dialog after button clicked', async () => {
     fireEvent.click(buttonElement)
     const dialogElement = wrapper.container.querySelector('.modal-dialog')
-    const formElement = wrapper.container.querySelector('.add-form')
+    const formElement = wrapper.container.querySelector('.bill-form')
     const dialogCloseElement = wrapper.container.querySelector('.modal-dialog .close') as HTMLButtonElement
 
     await waitFor(() => {

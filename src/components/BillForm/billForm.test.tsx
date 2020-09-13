@@ -5,9 +5,7 @@ import {
   RenderResult
 } from '@testing-library/react'
 import BillForm from './billForm'
-
-// jest.mock('axios')
-// const mockedAxios = axios as jest.Mocked<typeof axios>
+import { formatDate } from '../../util'
 
 let wrapper: RenderResult
 let container: HTMLElement
@@ -30,12 +28,11 @@ describe('test BillForm component', () => {
 
   it('should render correct component', () => {
     expect(formElement).toBeInTheDocument()
-    expect(formElement).toHaveClass('add-form')
+    expect(formElement).toHaveClass('bill-form')
     expect(categorySelectElement).toBeInTheDocument()
     expect(categorySelectElement.tagName).toBe('SELECT')
     expect(dateInputElement).toBeInTheDocument()
     expect(dateInputElement.tagName).toBe('INPUT')
-    expect(dateInputElement.type).toBe('date')
     expect(amountInputElement).toBeInTheDocument()
     expect(amountInputElement.tagName).toBe('INPUT')
     expect(amountInputElement.type).toBe('text')
@@ -44,13 +41,13 @@ describe('test BillForm component', () => {
   })
 
   it('should show error messages when form submitted with empty form controls', () => {
-    expect(dateInputElement.value).toBe('')
+    expect(dateInputElement.value).toBe(formatDate(new Date()))
     expect(categorySelectElement.value).toBe('')
     expect(amountInputElement.value).toBe('')
     fireEvent.submit(formElement)
 
     const emptyErrElementList = wrapper.queryAllByText('该项不能为空')
-    expect(emptyErrElementList.length).toBe(3)
+    expect(emptyErrElementList.length).toBe(2)
     emptyErrElementList.forEach((el) => {
       expect(el).toHaveClass('invalid-feedback')
     })

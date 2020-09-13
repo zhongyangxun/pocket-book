@@ -7,9 +7,11 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { AxiosResponse, AxiosError } from 'axios'
+import DatePicker from 'react-datepicker'
 import CategorySelect from '../CategorySelect/categorySelect'
 import { formatDate } from '../../util'
 import { addBillItem } from '../../api/bill'
+import './_style.scss'
 
 export type BillFieldElement = HTMLInputElement | HTMLSelectElement
 
@@ -31,7 +33,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
   const [form, setForm] = useState<BillFormFields>({
     category: '',
     amount: '',
-    date: ''
+    date: formatDate(new Date())
   })
 
   const [formErr, setFormErr] = useState<BillFormError>({
@@ -64,6 +66,13 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
         })
       }
     }
+  }
+
+  const handleDateChange = (date: Date) => {
+    setForm({
+      ...form,
+      date: formatDate(date)
+    })
   }
 
   const handleFocus = (e: FocusEvent<BillFieldElement>) => {
@@ -119,7 +128,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
   }
 
   return (
-    <form className="add-form" onSubmit={handleSubmit} noValidate data-testid="test-bill-form">
+    <form className="bill-form" onSubmit={handleSubmit} noValidate data-testid="test-bill-form">
       <div className="form-group">
         <label htmlFor="add-category">分类</label>
         <CategorySelect
@@ -141,20 +150,25 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
         <label htmlFor="date">
           日期
         </label>
-        <input
-          className={classNames('form-control', {
+        <div
+          className={classNames({
             'is-invalid': !!formErr.date
           })}
-          type="date"
-          id="date"
-          name="date"
-          max={formatDate(new Date())}
-          required
-          value={form.date}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          disabled={loading}
-        />
+        >
+          <DatePicker
+            className={classNames('form-control', {
+              'is-invalid': !!formErr.date
+            })}
+            id="date"
+            name="date"
+            maxDate={new Date()}
+            required
+            value={form.date}
+            onChange={handleDateChange}
+            onFocus={handleFocus}
+            disabled={loading}
+          />
+        </div>
         <div className="invalid-feedback">
           {formErr.date}
         </div>

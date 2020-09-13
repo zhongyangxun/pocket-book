@@ -5,8 +5,9 @@ import React, {
   useEffect
 } from 'react'
 import classNames from 'classnames'
+import DatePicker from 'react-datepicker'
 import CategorySelect from '../CategorySelect/categorySelect'
-import { formatDate } from '../../util'
+import { formatMonth } from '../../util'
 import { BillContext } from '../../context'
 import { BillParams } from '../../api/bill'
 
@@ -27,10 +28,9 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
     changeCategory
   } = context
 
-  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
+  const handleDateChange = (date: Date) => {
     if (changeMonth) {
-      changeMonth(value)
+      changeMonth(formatMonth(date))
     }
   }
 
@@ -58,14 +58,12 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
       <div className="form-row align-items-left">
         <div className="form-group mx-2">
           <label htmlFor="filter-month">月份</label>
-          <input
-            className="form-control mx-sm-3"
+          <DatePicker
             onChange={handleDateChange}
-            type="month"
-            name="month"
+            className="form-control mx-sm-3"
             value={month}
-            max={formatDate(new Date(), { hasDay: false })}
-            disabled={loading}
+            showMonthYearPicker
+            maxDate={new Date()}
             id="filter-month"
           />
         </div>

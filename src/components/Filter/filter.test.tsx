@@ -19,7 +19,6 @@ describe('test Filter component', () => {
     expect(element).toHaveClass('test-class-name')
     expect(inputMonthElement).toBeInTheDocument()
     expect(inputMonthElement?.tagName).toBe('INPUT')
-    expect(inputMonthElement?.getAttribute('type')).toBe('month')
     fireEvent.change(inputMonthElement, {
       target: {
         value: '2020-09'
