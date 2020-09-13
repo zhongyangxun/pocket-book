@@ -6,7 +6,8 @@ cache:
   - node_modules
 env:
   - CI=true
-
+script:
+  - yarn run build
 deploy:
   provider: pages
   skip_cleanup: true
