@@ -160,7 +160,7 @@ const createAddItemReqBodySchema = (categoryIds: string[]): ObjectSchema => {
   const addItemSchema = Joi.object({
     time: Joi.date().timestamp('javascript').required(),
     category: Joi.allow(...categoryIds).only().required(),
-    amount: Joi.number().positive().required()
+    amount: Joi.number().required()
   })
 
   return addItemSchema
