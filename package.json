@@ -15,7 +15,7 @@
   "scripts": {
     "react-start": "react-scripts start && cd server && yarn start",
     "start": "concurrently \"yarn react-start\" \"cd server && yarn start\"",
-    "build": "react-scripts build",
+    "build": "cross-env PUBLIC_URL=\"/pocket-book/build\" react-scripts build",
     "test": "react-scripts test --env=jsdom-fourteen",
     "test:nowatch": "cross-env CI=true yarn test",
     "eject": "react-scripts eject",
