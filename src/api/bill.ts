@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { baseUrl } from './config'
 
-const baseUrl = 'http://localhost:5000/bill'
+const BillBaseUrl = `${baseUrl}/bill`
 
 export interface BillParams {
   time?: number;
@@ -10,7 +11,7 @@ export interface BillParams {
 export const getBillList = (params: BillParams = {}) => {
   const { time, category } = params
 
-  return axios.get(`${baseUrl}/list`, {
+  return axios.get(`${BillBaseUrl}/list`, {
     params: {
       time,
       category
@@ -18,7 +19,7 @@ export const getBillList = (params: BillParams = {}) => {
   })
 }
 
-export const getBillCategories = () => axios.get(`${baseUrl}/categories`)
+export const getBillCategories = () => axios.get(`${BillBaseUrl}/categories`)
 
 export interface AddBillBody {
   time: number;
@@ -27,7 +28,7 @@ export interface AddBillBody {
 }
 
 export const addBillItem = (data: AddBillBody) => (
-  axios.post(`${baseUrl}/addItem`, {
+  axios.post(`${BillBaseUrl}/addItem`, {
     ...data
   })
 )
