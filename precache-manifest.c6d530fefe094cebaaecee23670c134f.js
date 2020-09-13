@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3fcd84e9773d4c466546dcb0716f81d2",
+    "revision": "b827523201af87888ff12bd5485bb7da",
     "url": "/pocket-book/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pocket-book/static/css/2.2f73783b.chunk.css"
   },
   {
-    "revision": "1e3691e4159f42e66998",
+    "revision": "81ec9d38bf9c81ea59bc",
     "url": "/pocket-book/static/css/main.db43efbc.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pocket-book/static/js/2.46c0c285.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1e3691e4159f42e66998",
-    "url": "/pocket-book/static/js/main.33b92663.chunk.js"
+    "revision": "81ec9d38bf9c81ea59bc",
+    "url": "/pocket-book/static/js/main.f2fb69cb.chunk.js"
   },
   {
     "revision": "af6f629a62e7cc8b1c7d",
