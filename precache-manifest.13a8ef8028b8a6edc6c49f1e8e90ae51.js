@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3ed3eb0f6c566ed248ea122df0bc3956",
+    "revision": "3fcd84e9773d4c466546dcb0716f81d2",
     "url": "/pocket-book/index.html"
   },
   {
