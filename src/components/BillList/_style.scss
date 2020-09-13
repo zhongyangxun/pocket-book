@@ -1,0 +1,13 @@
+.bill-list {
+
+  .bill-item {
+    display: flex;
+    justify-content: space-between;
+
+    .amount,
+    .time,
+    .category {
+      flex: 1 0;
+    }
+  }
+}

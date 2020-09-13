@@ -1,0 +1,66 @@
+{
+  "name": "pocket-book",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "classnames": "^2.2.6",
+    "react-datepicker": "^3.1.3",
+    "react-transition-group": "^4.4.1"
+  },
+  "scripts": {
+    "react-start": "react-scripts start && cd server && yarn start",
+    "start": "concurrently \"yarn react-start\" \"cd server && yarn start\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom-fourteen",
+    "test:nowatch": "cross-env CI=true yarn test",
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext js,ts,tsx src --max-warnings 5",
+    "add-libs": "yarn && cd server && yarn"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test:nowatch && yarn lint"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^11.0.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-datepicker": "^3.1.1",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-transition-group": "^4.4.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "husky": "^4.2.5",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "typescript": "^4.0.2"
+  }
+}
