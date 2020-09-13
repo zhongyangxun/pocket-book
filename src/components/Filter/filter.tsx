@@ -1,8 +1,7 @@
 import React, {
   FC,
   ChangeEvent,
-  useContext,
-  useEffect
+  useContext
 } from 'react'
 import classNames from 'classnames'
 import DatePicker from 'react-datepicker'
@@ -25,24 +24,11 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
     month,
     category,
     changeMonth,
-    changeCategory
+    changeCategory,
+    getBillList
   } = context
 
-  const handleDateChange = (date: Date) => {
-    if (changeMonth) {
-      changeMonth(formatMonth(date))
-    }
-  }
-
-  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target
-    if (changeCategory) {
-      changeCategory(value)
-    }
-  }
-
-  useEffect(() => {
-    const { getBillList } = context
+  const handleFormChange = () => {
     if (getBillList) {
       const parmas: BillParams = {
         time: month ? new Date(month).getTime() : undefined,
@@ -51,7 +37,22 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
 
       getBillList(parmas)
     }
-  }, [month, category])
+  }
+
+  const handleDateChange = (date: Date) => {
+    if (changeMonth) {
+      changeMonth(formatMonth(date))
+      handleFormChange()
+    }
+  }
+
+  const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target
+    if (changeCategory) {
+      changeCategory(value)
+      handleFormChange()
+    }
+  }
 
   return (
     <div className={classes} data-testid="test-filter">
