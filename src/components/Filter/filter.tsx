@@ -8,7 +8,6 @@ import DatePicker from 'react-datepicker'
 import CategorySelect from '../CategorySelect/categorySelect'
 import { formatMonth } from '../../util'
 import { BillContext } from '../../context'
-import { BillParams } from '../../api/bill'
 
 export interface FilterProps {
   className?: string
@@ -28,21 +27,17 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
     getBillList
   } = context
 
-  const handleFormChange = () => {
-    if (getBillList) {
-      const parmas: BillParams = {
-        time: month ? new Date(month).getTime() : undefined,
-        category
-      }
-
-      getBillList(parmas)
-    }
-  }
-
   const handleDateChange = (date: Date) => {
     if (changeMonth) {
       changeMonth(formatMonth(date))
-      handleFormChange()
+    }
+
+    if (getBillList) {
+      const time = date.getTime()
+      getBillList({
+        time,
+        category
+      })
     }
   }
 
@@ -50,7 +45,13 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
     const { value } = e.target
     if (changeCategory) {
       changeCategory(value)
-      handleFormChange()
+    }
+
+    if (getBillList) {
+      getBillList({
+        time: month ? new Date(month).getTime() : undefined,
+        category: value
+      })
     }
   }
 
