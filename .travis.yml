@@ -7,7 +7,7 @@ cache:
 env:
   - CI=true
 script:
-  - yarn build
+  - yarn run build
 
 deploy:
   provider: pages
