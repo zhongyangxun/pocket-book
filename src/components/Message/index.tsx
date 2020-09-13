@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { TransitionGroup } from 'react-transition-group'
 import Transition from '../Transition/transiton'
-import Message, { MessageType } from './msg'
+import Message, { MessageType } from './message'
 import './_style.scss'
 
 export interface MessageApi {
