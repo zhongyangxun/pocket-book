@@ -6,7 +6,6 @@ cache:
   - node_modules
 env:
   - CI=true
-  - NODE="production"
 
 deploy:
   provider: pages
