@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.db43efbc.chunk.css",
-    "main.js": "/static/js/main.b27b08b6.chunk.js",
-    "main.js.map": "/static/js/main.b27b08b6.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c2a89994.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c2a89994.js.map",
-    "static/css/2.2f73783b.chunk.css": "/static/css/2.2f73783b.chunk.css",
-    "static/js/2.46c0c285.chunk.js": "/static/js/2.46c0c285.chunk.js",
-    "static/js/2.46c0c285.chunk.js.map": "/static/js/2.46c0c285.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.028b88c0359814055a4ea87b8f89baa8.js": "/precache-manifest.028b88c0359814055a4ea87b8f89baa8.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.2f73783b.chunk.css.map": "/static/css/2.2f73783b.chunk.css.map",
-    "static/css/main.db43efbc.chunk.css.map": "/static/css/main.db43efbc.chunk.css.map",
-    "static/js/2.46c0c285.chunk.js.LICENSE.txt": "/static/js/2.46c0c285.chunk.js.LICENSE.txt"
+    "main.css": "/pocket-book/build/static/css/main.db43efbc.chunk.css",
+    "main.js": "/pocket-book/build/static/js/main.8b328e1d.chunk.js",
+    "main.js.map": "/pocket-book/build/static/js/main.8b328e1d.chunk.js.map",
+    "runtime-main.js": "/pocket-book/build/static/js/runtime-main.be295be5.js",
+    "runtime-main.js.map": "/pocket-book/build/static/js/runtime-main.be295be5.js.map",
+    "static/css/2.2f73783b.chunk.css": "/pocket-book/build/static/css/2.2f73783b.chunk.css",
+    "static/js/2.46c0c285.chunk.js": "/pocket-book/build/static/js/2.46c0c285.chunk.js",
+    "static/js/2.46c0c285.chunk.js.map": "/pocket-book/build/static/js/2.46c0c285.chunk.js.map",
+    "index.html": "/pocket-book/build/index.html",
+    "precache-manifest.67fde37c3e6601441a4806c174565b3d.js": "/pocket-book/build/precache-manifest.67fde37c3e6601441a4806c174565b3d.js",
+    "service-worker.js": "/pocket-book/build/service-worker.js",
+    "static/css/2.2f73783b.chunk.css.map": "/pocket-book/build/static/css/2.2f73783b.chunk.css.map",
+    "static/css/main.db43efbc.chunk.css.map": "/pocket-book/build/static/css/main.db43efbc.chunk.css.map",
+    "static/js/2.46c0c285.chunk.js.LICENSE.txt": "/pocket-book/build/static/js/2.46c0c285.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c2a89994.js",
+    "static/js/runtime-main.be295be5.js",
     "static/css/2.2f73783b.chunk.css",
     "static/js/2.46c0c285.chunk.js",
     "static/css/main.db43efbc.chunk.css",
-    "static/js/main.b27b08b6.chunk.js"
+    "static/js/main.8b328e1d.chunk.js"
   ]
 }
