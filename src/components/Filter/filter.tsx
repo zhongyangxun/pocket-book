@@ -67,6 +67,7 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
             showMonthYearPicker
             maxDate={new Date()}
             id="filter-month"
+            disabled={loading}
           />
         </div>
         <div className="form-group mx-2">
