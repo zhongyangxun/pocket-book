@@ -64,6 +64,7 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
             onChange={handleDateChange}
             className="form-control mx-sm-3"
             value={month}
+            selected={month ? new Date(month) : null}
             showMonthYearPicker
             maxDate={new Date()}
             id="filter-month"

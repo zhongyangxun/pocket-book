@@ -164,6 +164,7 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
             maxDate={new Date()}
             required
             value={form.date}
+            selected={new Date(form.date)}
             onChange={handleDateChange}
             onFocus={handleFocus}
             disabled={loading}
