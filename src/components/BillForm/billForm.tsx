@@ -7,7 +7,6 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { AxiosResponse, AxiosError } from 'axios'
-import DatePicker from 'react-datepicker'
 import CategorySelect from '../CategorySelect/categorySelect'
 import { formatDate } from '../../util'
 import { addBillItem } from '../../api/bill'
@@ -66,13 +65,6 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
         })
       }
     }
-  }
-
-  const handleDateChange = (date: Date) => {
-    setForm({
-      ...form,
-      date: formatDate(date)
-    })
   }
 
   const handleFocus = (e: FocusEvent<BillFieldElement>) => {
@@ -150,26 +142,20 @@ const BillForm: FC<BillFormProps> = (props: BillFormProps) => {
         <label htmlFor="date">
           日期
         </label>
-        <div
-          className={classNames({
+        <input
+          className={classNames('form-control', {
             'is-invalid': !!formErr.date
           })}
-        >
-          <DatePicker
-            className={classNames('form-control', {
-              'is-invalid': !!formErr.date
-            })}
-            id="date"
-            name="date"
-            maxDate={new Date()}
-            required
-            value={form.date}
-            selected={new Date(form.date)}
-            onChange={handleDateChange}
-            onFocus={handleFocus}
-            disabled={loading}
-          />
-        </div>
+          type="date"
+          id="date"
+          name="date"
+          max={formatDate(new Date())}
+          required
+          value={form.date}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          disabled={loading}
+        />
         <div className="invalid-feedback">
           {formErr.date}
         </div>

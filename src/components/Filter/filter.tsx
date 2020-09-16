@@ -4,8 +4,8 @@ import React, {
   useContext
 } from 'react'
 import classNames from 'classnames'
-import DatePicker from 'react-datepicker'
 import CategorySelect from '../CategorySelect/categorySelect'
+import YearMonthSelect from '../YearMonthSelect/yearMonthSelect'
 import { formatMonth } from '../../util'
 import { BillContext } from '../../context'
 
@@ -60,7 +60,7 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
       <div className="form-row align-items-left">
         <div className="form-group mx-2">
           <label htmlFor="filter-month">月份</label>
-          <DatePicker
+          {/* <DatePicker
             onChange={handleDateChange}
             className="form-control mx-sm-3"
             value={month}
@@ -69,6 +69,10 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
             maxDate={new Date()}
             id="filter-month"
             disabled={loading}
+          /> */}
+          <YearMonthSelect
+            className="form-control mx-sm-3 p-0"
+            onChange={handleDateChange}
           />
         </div>
         <div className="form-group mx-2">

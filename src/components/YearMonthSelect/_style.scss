@@ -1,0 +1,13 @@
+.year-month-select {
+  position: relative;
+
+  .dropdown-menu {
+    .row {
+      width: 210px;
+    }
+
+    .dropdown-item {
+      cursor: pointer;
+    }
+  }
+}
