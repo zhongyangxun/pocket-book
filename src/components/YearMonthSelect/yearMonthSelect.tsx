@@ -8,14 +8,14 @@ import './_style.scss'
 
 export interface YearMonthSelectProps {
   onChange: (date: Date) => void;
-  defaultValue?: Date;
+  value?: Date;
   className?: string;
 }
 
 const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) => {
-  const { onChange, defaultValue, className } = props
+  const { onChange, value, className } = props
   const [open, setOpen] = useState(false)
-  const date = defaultValue || new Date()
+  const date = value || new Date()
   const [year, setYear] = useState(date.getFullYear())
   const [month, setMonth] = useState(date.getMonth())
 
@@ -26,6 +26,17 @@ const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) 
       onChange(new Date(`${year}-${month + 1}`))
     }
   }, [year, month])
+
+  useEffect(() => {
+    const newValueYear = value?.getFullYear() as number
+    const newValueMonth = value?.getMonth() as number
+    if (newValueMonth !== month) {
+      setMonth(newValueMonth)
+    }
+    if (newValueYear !== year) {
+      setYear(newValueYear)
+    }
+  }, [value])
 
   const handleClick = () => {
     setOpen((prevOpen) => !prevOpen)

@@ -60,19 +60,10 @@ const Filter: FC<FilterProps> = (props: FilterProps) => {
       <div className="form-row align-items-left">
         <div className="form-group mx-2">
           <label htmlFor="filter-month">月份</label>
-          {/* <DatePicker
-            onChange={handleDateChange}
-            className="form-control mx-sm-3"
-            value={month}
-            selected={month ? new Date(month) : null}
-            showMonthYearPicker
-            maxDate={new Date()}
-            id="filter-month"
-            disabled={loading}
-          /> */}
           <YearMonthSelect
             className="form-control mx-sm-3 p-0"
             onChange={handleDateChange}
+            value={month ? new Date(month) : new Date()}
           />
         </div>
         <div className="form-group mx-2">
