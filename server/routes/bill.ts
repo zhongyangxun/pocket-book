@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import { promises as fs } from 'fs'
+import { promises as fs, promises } from 'fs'
 import parse from 'csv-parse/lib/sync'
 import Joi, { ObjectSchema } from 'joi'
 
