@@ -1,9 +1,15 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, {
+  FC,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import classNames from 'classnames'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import MonthSelect from './monthSelect'
 import YearSelect from './yearSelect'
+import useClickOutside from '../../hooks/useClickOutside'
 import './_style.scss'
 
 export interface YearMonthSelectProps {
@@ -18,8 +24,25 @@ const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) 
   const date = value || new Date()
   const [year, setYear] = useState(date.getFullYear())
   const [month, setMonth] = useState(date.getMonth())
+  const componentRef = useRef<HTMLDivElement>(null)
+
+  useClickOutside(componentRef, () => {
+    setOpen(false)
+  })
 
   const classes = classNames('year-month-select', className)
+  const dropdownClasses = classNames(
+    'dropdown-menu',
+    'px-2',
+    'shadow',
+    'border',
+    'border-dark',
+    {
+      show: open
+    }
+  )
+
+  const yearMonthText = `${year} 年 ${(month + 1).toString().padStart(2, '0')} 月`
 
   useEffect(() => {
     if (onChange) {
@@ -52,19 +75,16 @@ const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) 
   }
 
   return (
-    <div className={classes}>
+    <div className={classes} ref={componentRef} data-testid="year-month-select">
       <button
         className="btn"
         type="button"
         onClick={handleClick}
       >
-        {year}
-        年
-        {`${month + 1}`.padStart(2, '0')}
-        月
+        {yearMonthText}
         <Icon icon={faAngleDown} className="ml-2" />
       </button>
-      <div className="dropdown-menu px-2" style={{ display: open ? 'block' : 'none' }}>
+      <div className={dropdownClasses}>
         <div className="row mx-0">
           <YearSelect onSelect={handleYearSelect} value={year} />
           <MonthSelect onSelect={handleMonthSelect} value={month} />

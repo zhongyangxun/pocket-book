@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import YearMonthItem from './yearMonthItem'
 
 export interface MonthSelectProps {
@@ -13,10 +13,7 @@ const MonthSelect: FC<MonthSelectProps> = (props: MonthSelectProps) => {
     value: index
   }))
 
-  const [activeMonth, setActiveMonth] = useState(value)
-
   const handleMonthSelect = (selectedMonth: number) => {
-    setActiveMonth(selectedMonth)
     if (onSelect) {
       onSelect(selectedMonth)
     }
@@ -30,7 +27,7 @@ const MonthSelect: FC<MonthSelectProps> = (props: MonthSelectProps) => {
             key={itemValue}
             text={text}
             value={itemValue}
-            isActive={activeMonth === itemValue}
+            isActive={value === itemValue}
             onSelect={handleMonthSelect}
           />
         ))
