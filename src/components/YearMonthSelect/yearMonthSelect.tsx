@@ -1,6 +1,5 @@
 import React, {
   FC,
-  useEffect,
   useRef,
   useState
 } from 'react'
@@ -12,18 +11,20 @@ import YearSelect from './yearSelect'
 import useClickOutside from '../../hooks/useClickOutside'
 import './_style.scss'
 
+export type YearMonthSelectChangeEvent = (date: Date) => void
+
 export interface YearMonthSelectProps {
-  onChange: (date: Date) => void;
-  value?: Date;
+  onChange: YearMonthSelectChangeEvent;
+  value: Date;
   className?: string;
 }
 
 const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) => {
   const { onChange, value, className } = props
   const [open, setOpen] = useState(false)
-  const date = value || new Date()
-  const [year, setYear] = useState(date.getFullYear())
-  const [month, setMonth] = useState(date.getMonth())
+  const year = value.getFullYear()
+  const month = value.getMonth()
+  const realMonth = month + 1
   const componentRef = useRef<HTMLDivElement>(null)
 
   useClickOutside(componentRef, () => {
@@ -42,35 +43,18 @@ const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) 
     }
   )
 
-  const yearMonthText = `${year} 年 ${(month + 1).toString().padStart(2, '0')} 月`
-
-  useEffect(() => {
-    if (onChange) {
-      onChange(new Date(`${year}-${month + 1}`))
-    }
-  }, [year, month])
-
-  useEffect(() => {
-    const newValueYear = value?.getFullYear() as number
-    const newValueMonth = value?.getMonth() as number
-    if (newValueMonth !== month) {
-      setMonth(newValueMonth)
-    }
-    if (newValueYear !== year) {
-      setYear(newValueYear)
-    }
-  }, [value])
+  const yearMonthText = `${year} 年 ${(realMonth).toString().padStart(2, '0')} 月`
 
   const handleClick = () => {
     setOpen((prevOpen) => !prevOpen)
   }
 
   const handleYearSelect = (selectedYear: number) => {
-    setYear(selectedYear)
+    onChange(new Date(`${selectedYear}-${realMonth}`))
   }
 
   const handleMonthSelect = (selectedMonth: number) => {
-    setMonth(selectedMonth)
+    onChange(new Date(`${year}-${selectedMonth + 1}`))
     setOpen(false)
   }
 

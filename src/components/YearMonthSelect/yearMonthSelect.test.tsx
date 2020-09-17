@@ -86,6 +86,6 @@ describe('test YearMonthSelect component', () => {
     const selectYear = year - 1
     const yearItem = wrapper.queryByText(`${selectYear} 年`) as HTMLElement
     fireEvent.click(yearItem)
-    expect(testProps.onChange).toBeCalledWith(new Date(`${selectYear}-${selectMonth}`))
+    expect(testProps.onChange).toBeCalledWith(new Date(`${selectYear}-${month + 1}`))
   })
 })
