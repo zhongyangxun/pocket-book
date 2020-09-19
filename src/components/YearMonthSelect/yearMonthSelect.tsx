@@ -1,5 +1,6 @@
 import React, {
   FC,
+  useCallback,
   useRef,
   useState
 } from 'react'
@@ -27,9 +28,11 @@ const YearMonthSelect: FC<YearMonthSelectProps> = (props: YearMonthSelectProps) 
   const realMonth = month + 1
   const componentRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(componentRef, () => {
+  const clickOutSideHandler = useCallback(() => {
     setOpen(false)
-  })
+  }, [])
+
+  useClickOutside(componentRef, clickOutSideHandler)
 
   const classes = classNames('year-month-select', className)
   const dropdownClasses = classNames(
